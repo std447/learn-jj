@@ -266,3 +266,20 @@ jj git push
 
 ---
 
+## ⏭️ Next Steps: Going Beyond the Basics
+
+Congratulations 🎉! You’ve now learned how to use `jj` for everyday version control tasks: cloning, committing, pushing, and managing your local repository.
+
+This is more than enough to replace Git in your daily workflow. When you’re ready, `jj` offers powerful history-rewriting tools:
+
+* **Amending & Editing Commits**—Safely rewrite messages or adjust history.
+* **Stacked Changes**—Manage multiple in-progress changes more cleanly than with branches.
+* **Rebasing & Reordering**—Refine your history into a polished narrative.
+* **Conflict Handling**—Resolve merge conflicts more intuitively.
+
+You’ve built a solid foundation. Here's where to go next:
+
+* Explore the [official `jj` documentation](https://jj-vcs.github.io/jj/latest/).
+* Keep an eye out for our **Advanced Guide**, where we'll dive into history editing, stacked diffs, and more.
+
+> Keep practicing the basics—mastery comes from real use. The advanced workflows will feel natural once you're comfortable with `jj`'s mental model.
