@@ -182,3 +182,87 @@ GitHub will interpret this as a new branch, allowing you to open a pull request 
 
 ---
 
+## 🔍 Inspecting History & Changes
+
+Understanding how to inspect your work is a core skill in `jj`.
+
+### **View the Commit Graph**
+
+`jj log` is your primary tool for exploring the commit graph.
+
+```bash
+jj log
+```
+
+Use the `--reverse` flag to show the history from oldest to newest.
+
+```bash
+jj log --reverse
+```
+
+### **Understand Your Working Copy**
+
+The `@` symbol represents your working copy. To see what you've changed relative to the parent revision:
+
+```bash
+jj diff
+```
+
+### **See the Evolution of Your Changes**
+
+`jj evolog` is one of `jj`'s most powerful tools. It shows a complete history of how a change evolved—including all of its rewrites, amendments, and modifications.
+
+```bash
+jj evolog
+```
+
+---
+
+## 🧹 Cleaning Up & Syncing
+
+### **Abandon an Unwanted Change**
+
+If you create a change with `jj new` and decide not to keep it, simply abandon it.
+
+```bash
+jj abandon
+```
+
+This discards the current change and restores your working copy to the parent revision.
+
+### **Switch to a Different Revision**
+
+To move your working copy to a different revision (like `main`), use `jj edit`.
+
+```bash
+jj edit main
+```
+
+### **Managing Bookmarks**
+
+Because bookmarks are static, you must explicitly move or delete them.
+
+```bash
+# Point a bookmark to the current revision
+jj bookmark move my-feature
+
+# Remove a bookmark
+jj bookmark delete my-feature
+```
+
+### **Sync with Remotes**
+
+To get the latest changes from the remote:
+
+```bash
+jj git fetch
+```
+
+To send your local changes and bookmarks to the remote:
+
+```bash
+jj git push
+```
+
+---
+
