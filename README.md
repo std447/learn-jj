@@ -57,6 +57,7 @@ jj help
 ```
 
 ---
+
 ### 🤝 Git Compatibility
 
 `jj` works seamlessly with Git repositories. You can use `jj` commands in any Git-managed folder, and they will work as expected.
@@ -138,6 +139,46 @@ jj git push
 ```
 
 `jj` will automatically convert your change to a Git commit and push it to the remote, just as you would expect.
+
+---
+
+## 🔖 Working with Bookmarks (Branching in `jj`)
+
+In `jj`, **bookmarks** are named pointers to specific revisions. They are the `jj` equivalent of Git branches but with important differences:
+
+* **Static Pointers:** A bookmark stays at the same revision until you explicitly move it.
+* **No "Current" Bookmark:** Your working copy operates on a revision directly, not on a bookmark.
+* **Pushable:** Bookmarks can be pushed to Git remotes, where they behave like standard Git branches.
+
+### **Listing and Creating Bookmarks**
+
+```bash
+# List local bookmarks
+jj bookmark list
+
+# Create a new bookmark at the current revision (@)
+jj bookmark create my-feature
+```
+
+### **Working from a Bookmark**
+
+To work on a specific change, you either edit it directly or create a new change on top of it.
+
+```bash
+# Set your working copy to the revision pointed to by a bookmark
+jj edit my-feature
+
+# Start a new change on top of an existing bookmark
+jj new my-feature
+```
+
+### **Pushing a Bookmark to GitHub**
+
+```bash
+jj git push --bookmark my-feature
+```
+
+GitHub will interpret this as a new branch, allowing you to open a pull request as you normally would.
 
 ---
 
