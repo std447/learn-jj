@@ -47,7 +47,7 @@ Before you begin, make sure you have the following tools installed and set up.
 
 You can install `jj` using your system’s package manager or from source. For official installation instructions, visit the link below.
 
-👉 [jj-vcs.github.io/jj/latest/installation](https://jj-vcs.github.io/jj/latest/installation)
+👉 [https://jj-vcs.github.io/jj/latest/install-and-setup](https://jj-vcs.github.io/jj/latest/install-and-setup/#installation-and-setup)
 
 After installing, confirm everything is working by checking the version and listing the available commands.
 
@@ -62,9 +62,9 @@ jj help
 
 `jj` works seamlessly with Git repositories. You can use `jj` commands in any Git-managed folder, and they will work as expected.
 
+* **`jj git init --colocate`** to start working in existing Git-managed folder.
 * **`jj git clone`** to clone GitHub-hosted repositories.
 * **`jj git push`** to push your changes as Git commits.
-* Your existing Git configuration (`.gitconfig`) will apply automatically.
 
 No migration or conversion is needed—just start using `jj`.
 
@@ -75,7 +75,7 @@ No migration or conversion is needed—just start using `jj`.
 To start working with a GitHub-hosted project, you can clone it using the `jj` command just like you would with Git.
 
 ```bash
-jj git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
+jj git clone https://github.com/<your-username>/<your-repo-name>.git
 ```
 
 This creates a local workspace with the repository contents. The `jj` metadata is stored in a hidden `.jj/` folder, and your repository is now fully compatible with `jj` and Git.
@@ -109,17 +109,8 @@ This is my first experiment using `jj` instead of `git`.
 Unlike Git, `jj` tracks your working copy continuously. To commit your change, you'll first create a new, empty change on top of your current one, and then describe it.
 
 ```bash
-# Start a new change
-jj new
-
 # Add a message to describe the change
-jj describe -m "📚 docs(readme): add a first test line using jj"
-```
-
-A common shortcut is to do this in a single step using the `-m` flag.
-
-```bash
-jj new -m "📚 docs(readme): add a first test line using jj"
+jj commit -m "📚 docs(readme): add a first test line using jj"
 ```
 
 You can inspect the new change using `jj log`.
@@ -135,10 +126,12 @@ jj log
 When you’re ready to share your changes with the remote repository:
 
 ```bash
+# Assuming have branch name `main`
+jj bookmark set main -revision @-
 jj git push
 ```
 
-`jj` will automatically convert your change to a Git commit and push it to the remote, just as you would expect.
+`jj` will push your changes to the remote, just as you would expect.
 
 ---
 
@@ -194,10 +187,10 @@ Understanding how to inspect your work is a core skill in `jj`.
 jj log
 ```
 
-Use the `--reverse` flag to show the history from oldest to newest.
+Use the `--reversed` flag to show the history from oldest to newest.
 
 ```bash
-jj log --reverse
+jj log --reversed
 ```
 
 ### **Understand Your Working Copy**
